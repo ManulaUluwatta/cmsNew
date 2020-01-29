@@ -18,29 +18,28 @@
     <body>
          <form action="addConference.jsp">
             Conference Name :<input type="text" name="conferenceName" value=""><br>
-            Chair ID :<input type="text" name="chairID" value=""><br>
-            Date :<select>
+            Chair ID :
                     <%
                         Class.forName("com.mysql.jdbc.Driver");
                         Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/cms_data", "root", "");
                         Statement stm=connection.createStatement();
                         ResultSet re = stm.executeQuery("select * from chair");
                     %>
-                    <select>
+                    <select name="chair">
                         <%
                             while (re.next()) {
                                 String un = re.getString(1);
                         %>
-                        <option value="<%= un%>"><%= un%></option>
+                            <option value="<%= un%>"><%= un%></option>
                         <%
                             }
                         %>
-                    %>
-            </select>><br>
-            Time :<input type="text" name="time" value=""><br>
-            venue :<input type="password" name="venue" value=""><br>
-            subject :<input type="text" name="subjecte" value="">           
-            Seats :<input type="text" name="seats" value="">           
+                    </select><br>        
+            Date :<input type="Date" name="date" value=""><br>
+            Time :<input type="Time" name="time" value=""><br>
+            venue :<input type="text" name="venue" value=""><br>
+            subject :<input type="text" name="subject" value=""><br>         
+            Seats :<input type="Number" name="seats" value=""><br>           
             <input type="submit"></input>
             
         </form>
