@@ -27,23 +27,26 @@
                 boolean b=false;
                 String userType=null;
                 ResultSet rst = pst.executeQuery();
-                while(rst.next()){
-                    userType=rst.getString("userType");
-                    b=true;
-                }
-                
-                if(b){
-                    if(userType.equals("admin")){
-                        RequestDispatcher req = request.getRequestDispatcher("index.html");
-                        req.forward(request, response);
-                    }else if(userType.equals("participant")){
-                        
-                        RequestDispatcher req = request.getRequestDispatcher("register.html");
-                        req.forward(request, response);
-                    }
-                }else {
-                    response.sendRedirect("register.html");
-                    out.println("Invalid password <a href='login.jsp'>try again</a>");
+//                while(rst.next()){
+//                    userType=rst.getString("userType");
+//                    b=true;
+//                }
+//                
+//                if(b){
+//                    if(userType.equals("admin")){
+//                        RequestDispatcher req = request.getRequestDispatcher("index.html");
+//                        req.forward(request, response);
+//                    }else if(userType.equals("participant")){
+//                        
+//                        RequestDispatcher req = request.getRequestDispatcher("register.html");
+//                        req.forward(request, response);
+//                    }
+//                }else {
+//                    response.sendRedirect("register.html");
+//                    out.println("Invalid password <a href='login.jsp'>try again</a>");
+//                }
+                if(rst != null){
+                    response.sendRedirect("index.html");
                 }
         
         %>
