@@ -24,29 +24,22 @@
                 PreparedStatement pst = con.prepareStatement("Select * from user where email = ? and password = ? ");
                 pst.setString(1, email);
                 pst.setString(2, password);
-                boolean b=false;
-                String userType=null;
+                Boolean a=true;
                 ResultSet rst = pst.executeQuery();
-//                while(rst.next()){
-//                    userType=rst.getString("userType");
-//                    b=true;
-//                }
-//                
-//                if(b){
-//                    if(userType.equals("admin")){
-//                        RequestDispatcher req = request.getRequestDispatcher("index.html");
-//                        req.forward(request, response);
-//                    }else if(userType.equals("participant")){
-//                        
-//                        RequestDispatcher req = request.getRequestDispatcher("register.html");
-//                        req.forward(request, response);
-//                    }
-//                }else {
-//                    response.sendRedirect("register.html");
-//                    out.println("Invalid password <a href='login.jsp'>try again</a>");
-//                }
-                if(rst != null){
-                    response.sendRedirect("index.html");
+
+                while (rst.next()) {
+                                if (rst.getString("userType").equals("admin")) {
+                                    a=false;
+                                    response.sendRedirect("adminDashBoad.html");
+                                   // session.setAttribute("type", "Admin");
+                                   // session.setAttribute("name", email);
+
+                                } else if(rst.getString("userType").equals("participant")) {
+                                    a=false;
+                                    response.sendRedirect("participantDashBoard.html");
+                                    //session.setAttribute("type", "User");
+                                    //session.setAttribute("name", email);
+                                }
                 }
         
         %>
