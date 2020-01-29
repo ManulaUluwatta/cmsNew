@@ -20,7 +20,7 @@
                 String email = request.getParameter("email");
                 String password = request.getParameter("pass");
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/login", "root", "");
+                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/cms_data", "root", "");
                 PreparedStatement pst = con.prepareStatement("Select * from user where email = ? and password = ? ");
                 pst.setString(1, email);
                 pst.setString(2, password);
